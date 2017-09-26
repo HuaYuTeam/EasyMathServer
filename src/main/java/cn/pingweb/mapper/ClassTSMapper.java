@@ -5,10 +5,10 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Update;
 
 public interface ClassTSMapper extends CommonMapper {
-    @Insert("insert into classTS(cid,teacherId,num,createTime) values(#{cid},#{teacherId},#{num},#{createTime})")
+    @Insert("insert into ClassTS(cid,teacherId,num,createTime) values(#{cid},#{teacherId},#{num},#{createTime})")
     public void insert(ClassTS classTS);
 
-    @Update("update classTS(cid,teacherId,num,createTime) values(#{cid},#{teacherId},#{num},#{createTime})")
+    @Update("update ClassTS(cid,teacherId,num,createTime) values(#{cid},#{teacherId},#{num},#{createTime})")
     public void update(ClassTS classTS);
 
 }

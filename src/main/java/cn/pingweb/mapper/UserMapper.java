@@ -12,15 +12,15 @@ public interface UserMapper extends CommonMapper {
     @Insert("insert into User(uid,wxid,createTime,lastTime) values(#{uid},#{wxid},#{createTime},#{lastTime})")
     public void insert(User user);
 
-    @Delete("delete from user where id=#{id}")
-    public void deleteById(int id);
+    @Delete("delete from User where uid=#{uid}")
+    public void deleteById(String uid);
 
-    @Update("update users set name=#{name},age=#{age} where id=#{id}")
+    @Update("update User set wxid=#{wxid},lastTime=#{lastTime} where uid=#{uid}")
     public void updateT(User user);
 
-    @Select("select * from users where id=#{id}")
-    public User getUser(int id);
+    @Select("select * from User where uid=#{uid}")
+    public User getUser(String uid);
 
-    @Select("select * from users")
+    @Select("select * from User")
     public List<User> getAllUsers();
 }

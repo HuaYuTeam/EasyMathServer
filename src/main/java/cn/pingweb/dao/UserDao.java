@@ -10,8 +10,14 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+/*
+   暂时不用dao，直接mybatis的mapper生成bean
+ */
 @Transactional
 @Component
 public class UserDao implements ApplicationContextAware{
 
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+
+    }
 }

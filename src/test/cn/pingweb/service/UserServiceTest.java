@@ -1,6 +1,8 @@
 package cn.pingweb.service;
 
-import cn.pingweb.entity.Exam;
+import cn.pingweb.entity.User;
+import cn.pingweb.mapper.UserMapper;
+import cn.pingweb.service.impl.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +16,19 @@ import java.util.Date;
 public class UserServiceTest {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Test
     public void insert() throws Exception {
-//        User user = new User("0759", "zyp0759", new Date(), new Date());
+        User user = new User("0759", "zyp0759", new Date(), new Date());
 //        userService.insert(user);
-        Exam exam = new Exam("0759",  "zyp", 91.5, new Date());
-        userService.insert(exam);
+
+//        ExamResult exam = new ExamResult("0759",  "zyp", 91.5, new Date());
+//        userService.insert(exam);
+        userMapper.insert(user);
     }
 
 }

@@ -1,10 +1,15 @@
 package cn.pingweb.controller;
 
-import cn.pingweb.entity.Exam;
+import cn.pingweb.dto.ResultDto;
+import cn.pingweb.entity.ExamResult;
 import cn.pingweb.entity.User;
 import cn.pingweb.dto.UserInfoDto;
 import cn.pingweb.dto.UserScoreDto;
-import cn.pingweb.service.UserService;
+import cn.pingweb.enums.ResultCode;
+import cn.pingweb.exception.ParamException;
+import cn.pingweb.exception.WXExcetion;
+import cn.pingweb.service.impl.UserServiceImpl;
+import com.mysql.fabric.xmlrpc.base.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +21,7 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     // 注册
     @RequestMapping(value = "/wx/{wxid}/register",
@@ -35,18 +40,8 @@ public class UserController {
             produces = {"application/json;charset=UTF-8"})
     @ResponseBody
     public void login() {
-
-    }
-
-    //
-    @RequestMapping(value = "/wx/{wxid}/score",
-            method = RequestMethod.POST,
-            produces = {"application/json;charset=UTF-8"})
-    @ResponseBody
-    public UserScoreDto submitScore(@PathVariable("wxid") String wxid, @RequestBody Map<String, Double> map) {
-        Exam exam = new Exam("0759",  wxid, map.get("score"), new Date());
-        userService.insert(exam);
-        return new UserScoreDto(exam.getScore());
+        User user = new User();
+        userService.login(user);
     }
 
 }

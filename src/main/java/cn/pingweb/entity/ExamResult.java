@@ -5,20 +5,30 @@ import cn.pingweb.mapper.ExamMapper;
 
 import java.util.Date;
 
-public class Exam implements DBObject{
-    private String uid;
+public class ExamResult {
     private String id;
+    private String uid;
+    private String type;
     private double score;
     private Date createTime;
 
-    public Exam() {
+    public ExamResult() {
     }
 
-    public Exam(String uid, String id, double score, Date createTime) {
-        this.uid = uid;
+    public ExamResult(String id, String uid, String type, double score, Date createTime) {
         this.id = id;
+        this.uid = uid;
+        this.type = type;
         this.score = score;
         this.createTime = createTime;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUid() {
@@ -29,12 +39,12 @@ public class Exam implements DBObject{
         this.uid = uid;
     }
 
-    public String getId() {
-        return id;
+    public String getType() {
+        return type;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public double getScore() {
@@ -51,9 +61,5 @@ public class Exam implements DBObject{
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    public Class<? extends CommonMapper> getMapper() {
-        return ExamMapper.class;
     }
 }

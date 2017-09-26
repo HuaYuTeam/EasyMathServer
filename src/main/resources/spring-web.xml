@@ -60,9 +60,9 @@
     <!-- 配置数据源，使用dbcp -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-        <property name="url" value="jdbc:mysql://localhost:3306/wx"></property>
+        <property name="url" value="jdbc:mysql://119.29.53.102:3306/wx"></property>
         <property name="username" value="root"></property>
-        <property name="password" value="root"></property>
+        <property name="password" value="HuaYuTeam@2017"></property>
         <property name="maxActive" value="10"></property>
         <property name="maxIdle" value="5"></property>
     </bean>

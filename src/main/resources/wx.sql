@@ -32,10 +32,10 @@ CREATE TABLE `classts` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `exam`
+-- Table structure for `examResult`
 -- ----------------------------
-DROP TABLE IF EXISTS `exam`;
-CREATE TABLE `exam` (
+DROP TABLE IF EXISTS `examResult`;
+CREATE TABLE `examResult` (
   `id` varchar(255) NOT NULL COMMENT '每次测试id',
   `uid` varchar(255) NOT NULL COMMENT '用户id',
   `type` int(10) DEFAULT NULL COMMENT '题目类型',
@@ -45,9 +45,9 @@ CREATE TABLE `exam` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of exam
+-- Records of examResult
 -- ----------------------------
-INSERT INTO `exam` VALUES ('0759', '0759', null, '7', '2017-09-22 13:05:53');
+INSERT INTO `examResult` VALUES ('0759', '0759', null, '7', '2017-09-22 13:05:53');
 
 -- ----------------------------
 -- Table structure for `user`
