@@ -1,6 +1,5 @@
 package cn.pingweb.service.impl;
 
-import cn.pingweb.entity.DBObject;
 import cn.pingweb.entity.User;
 import cn.pingweb.mapper.UserMapper;
 import cn.pingweb.service.IUserService;
@@ -13,8 +12,8 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserMapper userMapper;
 
-    public void insert(DBObject object) {
-        userMapper.insert(object);
+    public void insert(User user) {
+        userMapper.insert(user);
     }
 
     public boolean register(User user) {

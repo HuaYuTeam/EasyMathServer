@@ -9,23 +9,17 @@ import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
-public interface ExamMapper extends CommonMapper{
-    @Insert("insert into ExamResult(uid,id,score,createTime) values(#{uid},#{id},#{score},#{createTime})")
+public interface ExamMapper {
+    @Insert("insert into ExamResult(uid,id,type,score,createTime) values(#{uid},#{type},#{uid},#{score},#{createTime})")
     public void insert(ExamResult examResult);
 
-    @Insert("insert into User(uid,wxid,createTime,lastTime) values(#{uid},#{wxid},#{createTime},#{lastTime})")
-    public void insert(User user);
-
-    @Delete("delete from User where uid=#{uid}")
+    @Delete("delete from ExamResult where uid=#{uid}")
     public void deleteById(String uid);
 
-    @Update("update User set wxid=#{wxid},lastTime=#{lastTime} where uid=#{uid}")
-    public void updateT(User user);
+    @Select("select * from ExamResult where uid=#{uid}")
+    public ExamResult getExamResultByUid(String uid);
 
-    @Select("select * from User where uid=#{uid}")
-    public User getUser(String uid);
-
-    @Select("select * from User")
-    public List<ExamResult> getAllUsers();
+    @Select("select * from ExamResult")
+    public List<ExamResult> getAllExamResults();
 
 }

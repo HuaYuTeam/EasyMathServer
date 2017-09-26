@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
-public interface UserMapper extends CommonMapper {
+public interface UserMapper {
     @Insert("insert into User(uid,wxid,createTime,lastTime) values(#{uid},#{wxid},#{createTime},#{lastTime})")
     public void insert(User user);
 

@@ -9,11 +9,14 @@ import cn.pingweb.exception.WXExcetion;
 import cn.pingweb.service.IExamService;
 import cn.pingweb.utils.ParamUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.Map;
 
+@Controller
 public class StudentController {
 
     @Autowired
