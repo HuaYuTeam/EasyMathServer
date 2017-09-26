@@ -36,4 +36,52 @@
     <!-- 4.扫描web相关的bean -->
     <context:component-scan base-package="cn.pingweb"/>
 
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!--配置数据库的连接池-->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+        <!--&lt;!&ndash;配置连接池的属性&ndash;&gt;-->
+        <!--<property name="driverClass" value="${jdbc.driver}"/>-->
+        <!--<property name="jdbcUrl" value="${jdbc.url}"/>-->
+        <!--<property name="user" value="${username}"/>-->
+        <!--<property name="password" value="${password}"/>-->
+
+        <!--&lt;!&ndash; c3p0连接池的私有属性&ndash;&gt;-->
+        <!--<property name="maxPoolSize" value="100"/>-->
+        <!--<property name="minPoolSize" value="50"/>-->
+        <!--<property name="autoCommitOnClose" value="false"/>-->
+        <!--&lt;!&ndash; 获取连接，超时时间设置 &ndash;&gt;-->
+        <!--<property name="checkoutTimeout" value="100000"/>-->
+        <!--&lt;!&ndash; 当获取连接失败，重试次数 &ndash;&gt;-->
+        <!--<property name="acquireRetryAttempts" value="2"/>-->
+
+    <!--</bean>-->
+
+
+    <!-- 配置数据源，使用dbcp -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/wx"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="root"></property>
+        <property name="maxActive" value="10"></property>
+        <property name="maxIdle" value="5"></property>
+    </bean>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" >
+
+        <!-- 加载mybatis的配置信息 -->
+        <!--<property name="configLocation" value="cn/labelnet/mybatis/config/SqlmapDaoConfig.xml"></property>-->
+
+        <!-- 加载数据源  dataSource-->
+        <property name="dataSource" ref="dataSource"></property>
+
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--com.dao是mapper类所在的包-->
+        <property name="basePackage" value="cn.pingweb.mapper"/>
+        <!--下面这个省略掉的话也不会出错，建议保留它-->
+        <property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+    </bean>
+
 </beans>

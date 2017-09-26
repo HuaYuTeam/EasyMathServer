@@ -1,24 +1,24 @@
 package cn.pingweb.controller;
 
-import cn.pingweb.Entity.Exam;
-import cn.pingweb.Entity.User;
+import cn.pingweb.entity.Exam;
+import cn.pingweb.entity.User;
 import cn.pingweb.dto.UserInfoDto;
 import cn.pingweb.dto.UserScoreDto;
 import cn.pingweb.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.Map;
 
-@Controller //@Service @Component
-@RequestMapping("/user")
+//@Controller //@Service @Component
+//@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
+    // 注册
     @RequestMapping(value = "/wx/{wxid}/register",
             method = RequestMethod.POST,
             produces = {"application/json;charset=UTF-8"})
@@ -29,6 +29,16 @@ public class UserController {
         return new UserInfoDto(user.getUid(), user.getLastTime());
     }
 
+    // 登陆
+    @RequestMapping(value = "/wx/{wxid}/score",
+            method = RequestMethod.POST,
+            produces = {"application/json;charset=UTF-8"})
+    @ResponseBody
+    public void login() {
+
+    }
+
+    //
     @RequestMapping(value = "/wx/{wxid}/score",
             method = RequestMethod.POST,
             produces = {"application/json;charset=UTF-8"})

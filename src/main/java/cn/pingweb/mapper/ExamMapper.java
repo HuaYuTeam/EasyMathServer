@@ -1,7 +1,6 @@
 package cn.pingweb.mapper;
 
-import cn.pingweb.Entity.Exam;
-import cn.pingweb.Entity.User;
+import cn.pingweb.entity.Exam;
 import org.apache.ibatis.annotations.Insert;
 
 public interface ExamMapper extends CommonMapper{

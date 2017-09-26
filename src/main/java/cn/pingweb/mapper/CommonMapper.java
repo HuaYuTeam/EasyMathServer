@@ -1,6 +1,6 @@
 package cn.pingweb.mapper;
 
-import cn.pingweb.Entity.DBObject;
+import cn.pingweb.entity.DBObject;
 
 public interface CommonMapper {
     void insert(DBObject object);

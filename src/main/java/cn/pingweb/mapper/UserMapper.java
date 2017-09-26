@@ -1,6 +1,6 @@
 package cn.pingweb.mapper;
 
-import cn.pingweb.Entity.User;
+import cn.pingweb.entity.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;

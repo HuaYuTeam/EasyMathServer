@@ -1,4 +1,4 @@
-package cn.pingweb.Entity;
+package cn.pingweb.entity;
 
 import cn.pingweb.mapper.CommonMapper;
 import cn.pingweb.mapper.UserMapper;
