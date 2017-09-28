@@ -1,22 +1,19 @@
 package cn.pingweb.controller;
 
-import cn.pingweb.dto.ResultDto;
-import cn.pingweb.dto.UserScoreDto;
+import cn.pingweb.dto.ResponseDto;
 import cn.pingweb.entity.ExamResult;
-import cn.pingweb.enums.ResultCode;
-import cn.pingweb.exception.ParamException;
 import cn.pingweb.exception.WXExcetion;
 import cn.pingweb.service.IExamService;
-import cn.pingweb.utils.ParamUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
+@RequestMapping("/student")
 public class StudentController {
 
     @Autowired
@@ -32,22 +29,23 @@ public class StudentController {
 
     @RequestMapping(value = "/wx/{wxid}/score",
             method = RequestMethod.POST,
-            produces = {"application/json;charset=UTF-8"})
+            produces = {"application/json;charset=UTF-8"}
+            )
     @ResponseBody
-    public ResultDto submitExam(@PathVariable("uid") String uid, @RequestBody Map<String, Object> map) {
-        ResultDto resultDto = new ResultDto(ResultCode.SUCCESS);
+    public ResponseDto submitExam(@PathVariable("wxid") String uid,
+                                  @RequestParam("type") String type,
+                                  @RequestParam("score") double score) {
+        Map<String, Object> result = new HashMap<String, Object>();
         try {
-            String type = ParamUtil.getValue(map, "type");
-            Double score = ParamUtil.getValue(map, "score");
+//            String type = ParamUtil.getValue(map, "type");
+//            Double score = ParamUtil.getValue(map, "score");
             ExamResult examResult = new ExamResult("0759", uid, type, score, new Date());
             examService.submitExam(examResult);
-            resultDto.setObject(examResult);
-        } catch (ParamException excetion) {
-            resultDto = new ResultDto(ResultCode.ERRO, null);
+            result.put("score", examResult);
         } catch (WXExcetion excetion) {
-            resultDto = new ResultDto(ResultCode.FAIL, null);
+            return ResponseDto.erro();
         }
 
-        return resultDto;
+        return ResponseDto.success(result);
     }
 }

@@ -9,20 +9,20 @@ public enum ResultCode {
     FAIL(-1, "fail"),
     ERRO(-2, "erro");
 
-    private int state;
+    private int code;
     private String msg;
 
-    ResultCode(int state, String msg) {
-        this.state = state;
+    ResultCode(int code, String msg) {
+        this.code = code;
         this.msg = msg;
     }
 
-    public int getState() {
-        return state;
+    public int getCode() {
+        return code;
     }
 
-    public void setState(int state) {
-        this.state = state;
+    public void setCode(int code) {
+        this.code = code;
     }
 
     public String getMsg() {

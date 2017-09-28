@@ -4,6 +4,7 @@ import cn.pingweb.entity.ClassTS;
 import cn.pingweb.mapper.ClassTSMapper;
 import cn.pingweb.mapper.ExamMapper;
 import cn.pingweb.mapper.UserMapper;
+import cn.pingweb.service.ITeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +12,7 @@ import org.springframework.stereotype.Service;
  * Created by Administrator on 2017/9/26.
  */
 @Service
-public class TeacherServiceImpl {
+public class TeacherServiceImpl implements ITeacherService{
     @Autowired
     private UserMapper userMapper;
 
@@ -20,4 +21,16 @@ public class TeacherServiceImpl {
 
     @Autowired
     private ClassTSMapper classTSMapper;
+
+    public void createClassTS() {
+
+    }
+
+    public void checkStudent() {
+
+    }
+
+    public void checkAllStudents() {
+
+    }
 }

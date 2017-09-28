@@ -1,37 +1,42 @@
 package cn.pingweb.controller;
 
-import cn.pingweb.dto.ResultDto;
-import cn.pingweb.entity.ExamResult;
+import cn.pingweb.dto.ResponseDto;
 import cn.pingweb.entity.User;
-import cn.pingweb.dto.UserInfoDto;
-import cn.pingweb.dto.UserScoreDto;
-import cn.pingweb.enums.ResultCode;
-import cn.pingweb.exception.ParamException;
 import cn.pingweb.exception.WXExcetion;
-import cn.pingweb.service.impl.UserServiceImpl;
-import com.mysql.fabric.xmlrpc.base.Param;
+import cn.pingweb.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
-//@Controller //@Service @Component
-//@RequestMapping("/user")
+@Controller //@Service @Component
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
-    private UserServiceImpl userService;
+    private IUserService userService;
 
     // 注册
     @RequestMapping(value = "/wx/{wxid}/register",
             method = RequestMethod.POST,
             produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public UserInfoDto register(@PathVariable("wxid") String wxid) {
-        User user = new User("0759", wxid, new Date(), new Date());
-        userService.insert(user);
-        return new UserInfoDto(user.getUid(), user.getLastTime());
+    public ResponseDto register(@PathVariable("wxid") String wxid) {
+        Map<String, Object> result = new HashMap<String, Object>();
+        try{
+            User user = new User("0759", wxid, new Date(), new Date());
+            userService.register(user);
+            result.put("user", user);
+        } catch (WXExcetion excetion) {
+            return ResponseDto.erro();
+        } catch (Exception excetion) {
+            return ResponseDto.erro();
+        }
+        int i = 0;
+        return ResponseDto.success(result);
     }
 
     // 登陆

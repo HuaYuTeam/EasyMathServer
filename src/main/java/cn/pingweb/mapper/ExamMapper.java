@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Update;
 import java.util.List;
 
 public interface ExamMapper {
-    @Insert("insert into ExamResult(uid,id,type,score,createTime) values(#{uid},#{type},#{uid},#{score},#{createTime})")
+    @Insert("insert into ExamResult(uid,type,score,createTime) values(#{uid},#{type},#{score},#{createTime})")
     public void insert(ExamResult examResult);
 
     @Delete("delete from ExamResult where uid=#{uid}")

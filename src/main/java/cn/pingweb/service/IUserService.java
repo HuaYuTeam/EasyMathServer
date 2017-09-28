@@ -1,6 +1,7 @@
 package cn.pingweb.service;
 
 import cn.pingweb.entity.User;
+import cn.pingweb.exception.WXExcetion;
 
 /**
  * Created by Administrator on 2017/9/26.
@@ -12,7 +13,7 @@ public interface IUserService {
      * @param user
      * @return
      */
-    boolean register(User user);
+    void register(User user) throws WXExcetion, Exception;
 
     /**
      * 注册

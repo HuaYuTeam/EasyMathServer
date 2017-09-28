@@ -5,7 +5,7 @@ import cn.pingweb.mapper.UserMapper;
 
 import java.util.Date;
 
-public class User implements DBObject {
+public class User {
     private String uid;
     private String wxid;
     private Date createTime;
@@ -51,7 +51,5 @@ public class User implements DBObject {
 
     public void setLastTime(Date lastTime) {
         this.lastTime = lastTime;
-    }public Class<? extends CommonMapper> getMapper() {
-        return UserMapper.class;
     }
 }

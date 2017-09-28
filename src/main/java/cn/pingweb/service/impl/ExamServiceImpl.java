@@ -21,7 +21,11 @@ public class ExamServiceImpl implements IExamService {
     }
 
     public boolean submitExam(ExamResult examResult) throws WXExcetion {
-        examMapper.insert(examResult);
+        try {
+            examMapper.insert(examResult);
+        } catch (Exception exception) {
+            throw new WXExcetion("erro");
+        }
         return false;
     }
 
