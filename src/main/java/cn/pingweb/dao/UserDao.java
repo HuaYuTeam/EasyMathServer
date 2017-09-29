@@ -21,5 +21,6 @@ import java.util.Arrays;
 public class UserDao implements ApplicationContextAware{
 
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+
     }
 }
