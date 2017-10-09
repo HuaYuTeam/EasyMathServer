@@ -2,7 +2,7 @@ package cn.pingweb.controller;
 
 import cn.pingweb.dto.ResponseDto;
 import cn.pingweb.entity.User;
-import cn.pingweb.exception.WXExcetion;
+import cn.pingweb.exception.WXException;
 import cn.pingweb.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,7 +30,7 @@ public class UserController {
             User user = new User("0759", wxid, new Date(), new Date());
             userService.register(user);
             result.put("user", user);
-        } catch (WXExcetion excetion) {
+        } catch (WXException excetion) {
             return ResponseDto.erro();
         } catch (Exception excetion) {
             return ResponseDto.erro();

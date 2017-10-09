@@ -5,8 +5,8 @@ import cn.pingweb.mapper.ExamMapper;
 
 import java.util.Date;
 
-public class ExamResult {
-    private String id;
+public class ExamResult implements Comparable<ExamResult>{
+    private int id;
     private String uid;
     private String type;
     private double score;
@@ -15,19 +15,18 @@ public class ExamResult {
     public ExamResult() {
     }
 
-    public ExamResult(String id, String uid, String type, double score, Date createTime) {
-        this.id = id;
+    public ExamResult( String uid, String type, double score, Date createTime) {
         this.uid = uid;
         this.type = type;
         this.score = score;
         this.createTime = createTime;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -61,5 +60,10 @@ public class ExamResult {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    @Override
+    public int compareTo(ExamResult o) {
+        return this.createTime.compareTo(o.createTime);
     }
 }

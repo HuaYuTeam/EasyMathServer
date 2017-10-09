@@ -23,7 +23,7 @@ public class UserServiceTest {
 
     @Test
     public void insert() throws Exception {
-        User user = new User("0759", "zyp0759", new Date(), new Date());
+        User user = new User("075911", "lzh0759", new Date(), new Date());
 //        userService.insert(user);
 
 //        ExamResult exam = new ExamResult("0759",  "zyp", 91.5, new Date());

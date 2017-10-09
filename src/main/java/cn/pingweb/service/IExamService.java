@@ -1,7 +1,7 @@
 package cn.pingweb.service;
 
 import cn.pingweb.entity.ExamResult;
-import cn.pingweb.exception.WXExcetion;
+import cn.pingweb.exception.WXException;
 
 /**
  * Created by Administrator on 2017/9/26.
@@ -18,6 +18,6 @@ public interface IExamService {
      * 提交试卷
      * @return
      */
-    boolean submitExam(ExamResult examResult) throws WXExcetion;
+    boolean submitExam(ExamResult examResult) throws WXException;
 
 }

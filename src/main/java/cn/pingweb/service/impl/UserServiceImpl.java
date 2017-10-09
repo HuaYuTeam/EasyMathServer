@@ -1,7 +1,7 @@
 package cn.pingweb.service.impl;
 
 import cn.pingweb.entity.User;
-import cn.pingweb.exception.WXExcetion;
+import cn.pingweb.exception.WXException;
 import cn.pingweb.mapper.UserMapper;
 import cn.pingweb.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +17,11 @@ public class UserServiceImpl implements IUserService {
         userMapper.insert(user);
     }
 
-    public void register(User user) throws WXExcetion{
+    public void register(User user) throws WXException {
         try {
             userMapper.insert(user);
         } catch (Exception exception) {
-            throw new WXExcetion("erro");
+            throw new WXException("erro");
         }
 
     }

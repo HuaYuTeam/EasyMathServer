@@ -31,6 +31,5 @@ public class StudentServiceImpl implements IStudentService {
     }
 
     public void submitExam() {
-
     }
 }

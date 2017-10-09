@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="WX_Calculator:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="WX_Calculator.war">
-      <element id="artifact" artifact-name="WX_Calculator:war exploded" />
-    </root>
-  </artifact>
-</component>

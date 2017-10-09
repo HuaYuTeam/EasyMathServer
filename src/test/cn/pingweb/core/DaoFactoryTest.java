@@ -20,7 +20,7 @@ public class DaoFactoryTest {
 
     @Test
     public void testBean() {
-        mapper.insert(new User("123", "456", new Date(), new Date()));
+        mapper.insert(new User("linZeHua", "4561", new Date(), new Date()));
         System.out.println(mapper);
     }
 
