@@ -4,10 +4,16 @@ import cn.pingweb.dto.ResponseDto;
 import cn.pingweb.entity.User;
 import cn.pingweb.exception.WXException;
 import cn.pingweb.service.IUserService;
+import cn.pingweb.utils.WXUtils;
+import com.sun.jndi.toolkit.url.Uri;
+import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
+import java.net.MalformedURLException;
+import java.net.URI;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,13 +46,13 @@ public class UserController {
     }
 
     // 登陆
-    @RequestMapping(value = "/wx/{wxid}/score",
+    @RequestMapping(value = "/wx/{wxid}/onlogin",
             method = RequestMethod.POST,
             produces = {"application/json;charset=UTF-8"})
     @ResponseBody
-    public void login() {
-        User user = new User();
-        userService.login(user);
+    public Object login() throws MalformedURLException {
+        String url = "https://api.weixin.qq.com/sns/jscode2session?appid=wx9bd1e6712120a747&secret=8300c178a5e5e4aef0a6cefff5f1d245&js_code=JSCODE&grant_type=authorization_code";
+        return WXUtils.doGet(url,"utf-8");
     }
 
 }

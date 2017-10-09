@@ -9,6 +9,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import sun.reflect.ConstructorAccessor;
+
+import java.util.Arrays;
 
 /*
    暂时不用dao，直接mybatis的mapper生成bean
