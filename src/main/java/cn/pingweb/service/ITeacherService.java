@@ -1,5 +1,9 @@
 package cn.pingweb.service;
 
+import cn.pingweb.entity.ExamResult;
+
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/9/26.
  */
@@ -11,5 +15,5 @@ public interface ITeacherService {
     void checkStudent();
 
     // 查看所有学生
-    void checkAllStudents();
+    List<ExamResult> checkAllStudents();
 }

@@ -12,7 +12,7 @@ import java.util.*;
 
 // /EasyMathServer/student/wx/123/score
 @Controller
-@RequestMapping("/student")
+@RequestMapping("/EasyMathServer/student")
 public class StudentController {
 
     private final String SCORE = "score";
@@ -59,7 +59,7 @@ public class StudentController {
     )
     @ResponseBody
     public ResponseDto listGrade(@RequestParam("wxid") String uid) {
-        Map<String, Object> result = new HashMap<>();
+        Map<String, Object> result = new HashMap<String, Object>();
 
 
         List<ExamResult> examResultList = examService.getEaxamResultsByWxId(uid);
